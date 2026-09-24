@@ -6,23 +6,23 @@
         {
             try
             {
-                // 1) Get Directory
+              
                 string FolderPath = Directory.GetCurrentDirectory() + "/wwwroot/" + FolderName;
 
-                // لو الفولدر مش موجود، اعمله
+    
                 if (!Directory.Exists(FolderPath))
                 {
                     Directory.CreateDirectory(FolderPath);
                 }
 
-                // 2) Get File Name
+               
                 string FileName = Guid.NewGuid() + Path.GetExtension(File.FileName);
-                // Guid => Word Contain 36 Character 
+              
 
-                // 3) Merge Path With File Name
+                
                 string FilePath = Path.Combine(FolderPath, FileName);
 
-                // 4) Save File As Stream
+               
                 using (FileStream Stream = new FileStream(FilePath, FileMode.Create))
                 {
                     File.CopyTo(Stream);
