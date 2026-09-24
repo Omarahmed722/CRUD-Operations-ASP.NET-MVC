@@ -1,0 +1,50 @@
+﻿@model TestWebProjec3T.DAL.Entites.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="card-title mb-0">Edit Employee</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="SaveEditData" method="post">
+                        <!-- ID خفي لحفظ المعرف واستخدامه في التحديث -->
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold">Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter full name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Age" class="form-label fw-bold">Age</label>
+                            <input asp-for="Age" type="number" class="form-control" placeholder="Enter age" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Grade" class="form-label fw-bold">Grade</label>
+                            <input asp-for="Grade" type="number" class="form-control" placeholder="Enter grade (0-4)" />
+                            <span asp-validation-for="Grade" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-action="GetAll" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-success">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

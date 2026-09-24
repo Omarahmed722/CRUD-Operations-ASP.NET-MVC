@@ -1,0 +1,61 @@
+﻿@using TestWebProjec3T.DAL.Entites
+@using TestWebProjec3T.ModelVM.EmployeeVM
+@model List<GetEmployeeVM>
+
+
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Profile</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>CreatedOn</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>
+                Action
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(emp.Image))
+                    {
+                        <img src="@emp.Image" width="50" height="50" style="object-fit:cover; border-radius:6px;" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">No Image</span>
+                    }
+                </td>
+                <td>@emp.Name</td>
+                <td>@emp.Age</td>
+                <td>@emp.Grade</td>
+                <td>@emp.CreatedOn</td>
+                <td>@emp.Address</td>
+                <td>@emp.Email</td>
+                <td>
+                    <a asp-action="GetBYId" asp-controller="Info" asp-route-empId="@emp.Id" class="btn btn-warning">
+                        View
+                    </a>
+                    <a asp-action="Edit" asp-controller="Info" asp-route-id="@emp.Id" class="btn btn-primary">
+                        Edit
+                    </a>
+                    <a asp-action="Delete" asp-controller="Info" asp-route-empId="@emp.Id" class="btn btn-danger">
+                        Delete
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
